@@ -1,0 +1,38 @@
+{
+  "name": "@packages/api",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint --flag unstable_native_nodejs_ts_config",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@packages/auth": "workspace:*",
+    "@packages/db": "workspace:*",
+    "@packages/validators": "workspace:*",
+    "@trpc/server": "catalog:",
+    "superjson": "^2.2.6",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@toolings/eslint-config": "workspace:*",
+    "@toolings/prettier-config": "workspace:*",
+    "@toolings/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@toolings/prettier-config"
+}

@@ -1,0 +1,27 @@
+{
+  "extends": "@toolings/typescript-config/base.json",
+  "compilerOptions": {
+    "verbatimModuleSyntax": true,
+    /* Bundled projects */
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    /* Path Aliases */
+    "paths": {
+      "@web/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "apps/web/next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+, "../../packages/api/src/root.ts"  ],
+  "exclude": ["node_modules"]
+}

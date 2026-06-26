@@ -1,0 +1,7 @@
+{
+  "name": "@toolings/typescript-config",
+  "private": true,
+  "files": [
+    "*.json"
+  ]
+}
