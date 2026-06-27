@@ -31,10 +31,9 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.1.0",
-    "bufferutil": "^4.1.0",
     "drizzle-orm": "^0.45.2",
     "drizzle-zod": "^0.8.3",
+    "pg": "^8.22.0",
     "zod": "catalog:"
   },
   "devDependencies": {
@@ -42,6 +41,7 @@
     "@toolings/prettier-config": "workspace:*",
     "@toolings/typescript-config": "workspace:*",
     "@types/node": "catalog:",
+    "@types/pg": "^8.20.0",
     "drizzle-kit": "^0.31.10",
     "eslint": "catalog:",
     "prettier": "catalog:",

@@ -20,7 +20,7 @@
     "@better-auth/expo": "catalog:",
     "@packages/db": "workspace:*",
     "@t3-oss/env-core": "^0.13.11",
-    "better-auth": "catalog:",
+    "better-auth": "1.6.22",
     "zod": "catalog:"
   },
   "devDependencies": {

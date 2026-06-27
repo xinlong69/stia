@@ -1,8 +1,9 @@
-import { defineConfig } from "eslint/config";
 
 import { baseConfig, restrictEnvAccess } from "@toolings/eslint-config/base";
 import { nextjsConfig } from "@toolings/eslint-config/nextjs";
 import { reactConfig } from "@toolings/eslint-config/react";
+import { storybookConfig } from "@toolings/eslint-config/storybook";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig(
   {
@@ -11,5 +12,6 @@ export default defineConfig(
   baseConfig,
   reactConfig,
   nextjsConfig,
+  ...storybookConfig,
   restrictEnvAccess,
 );

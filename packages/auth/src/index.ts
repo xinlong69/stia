@@ -34,7 +34,7 @@ export function initAuth<
       discord: {
         clientId: options.discordClientId,
         clientSecret: options.discordClientSecret,
-        redirectURI: `${options.productionUrl}/api/auth/callback/discord`,
+        redirectURI: `${options.baseUrl}/api/auth/callback/discord`,
       },
     },
     trustedOrigins: ["expo://"],
@@ -51,18 +51,40 @@ export function initAuth<
 export type Auth<T extends BetterAuthPlugin[] = []> =
   ReturnType<typeof initAuth<T>>;
 
+// 1. Define what a concrete User and Session object shape looks like
+export interface User {
+  id: string;
+  email: string;
+  emailVerified: boolean;
+  name: string;
+  image?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Session {
+  session: {
+    id: string;
+    userId: string;
+    expiresAt: Date;
+    token: string;
+    createdAt: Date;
+    updatedAt: Date;
+    userAgent?: string | null;
+    ipAddress?: string | null;
+  };
+  user: User;
+}
+
 /**
  * Safe type for consumption across package boundaries.
  * Intentionally omits plugin information.
  */
 export interface AuthLike {
   api: {
+    // 2. Swapped `Promise<any>` with `Promise<Session | null>`
     getSession: (args: {
       headers: Headers;
-    }) => Promise<any>;
+    }) => Promise<Session | null>;
   };
 }
-
-export type Session = Awaited<
-  ReturnType<AuthLike["api"]["getSession"]>
->;

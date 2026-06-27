@@ -1,5 +1,6 @@
-import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from 'pg';
+
 import * as accommodationSchema from "./schema/accomodation";
 import * as authSchema from "./schema/auth";
 import * as checklistSchema from "./schema/checklist";
@@ -16,11 +17,12 @@ if (!databaseUrl) {
   throw new Error("Missing POSTGRES_URL");
 }
 
-const sql = neon(databaseUrl);
+const pool = new Pool({
+  connectionString: databaseUrl,
+});
 
 // Initialize Drizzle with your options passed in a configuration object
-export const db = drizzle({
-  client: sql,
+export const db = drizzle(pool, {
   schema: { 
     ...accommodationSchema,
     ...authSchema,

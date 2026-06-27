@@ -20,7 +20,7 @@ import {
 } from "@packages/ui/field";
 import { Input } from "@packages/ui/input";
 import { toast } from "@packages/ui/toast";
-import {
+import type {
   TRPCClientError
 } from "@trpc/client";
 
@@ -62,7 +62,7 @@ export function CreatePostForm() {
   return (
     <form
       className="w-full max-w-2xl"
-      onSubmit={form.handleSubmit}
+      onSubmit={(e) => form.handleSubmit(e)}
     >
       <FieldGroup>
         <form.Field

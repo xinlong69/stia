@@ -7,7 +7,8 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import type { AuthLike, Session } from "@packages/auth";
-import { db, type Database } from "@packages/db/client";
+import type { Database } from "@packages/db/client";
+import { db } from "@packages/db/client";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { z, ZodError } from "zod";
@@ -26,7 +27,7 @@ import { z, ZodError } from "zod";
  */
 export interface TRPCContext {
   authApi: AuthLike["api"];
-  session: Session;
+  session: Session | null;
   db: Database;
 }
 
@@ -35,15 +36,6 @@ export const createTRPCContext = async (opts: {
   auth: AuthLike;
 }): Promise<TRPCContext> => {
   const authApi = opts.auth.api;
-
-  // Guard against missing headers if called in non-HTTP contexts
-  if (!opts.headers) {
-    return {
-      authApi,
-      session: null,
-      db,
-    };
-  }
 
   const session = await authApi.getSession({
     headers: opts.headers,
