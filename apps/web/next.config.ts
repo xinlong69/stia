@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
     "@packages/api",
     "@packages/auth",
     "@packages/db",
+    "@packages/email",
     "@packages/ui",
     "@packages/validators",
   ],

@@ -25,6 +25,7 @@
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
+    "doctor:mobile": "pnpm --filter @apps/mobile exec npx expo-doctor",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "prepare": "husky"
@@ -35,7 +36,7 @@
     "dotenv-cli": "^11.0.0",
     "husky": "^9.1.7",
     "prettier": "catalog:",
-    "turbo": "^2.10.0",
+    "turbo": "^2.10.2",
     "typescript": "catalog:"
   },
   "prettier": "@toolings/prettier-config"

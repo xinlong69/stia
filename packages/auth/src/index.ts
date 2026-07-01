@@ -1,51 +1,87 @@
 import { expo } from "@better-auth/expo";
-import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
+import type { BetterAuthPlugin } from "better-auth";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { oAuthProxy } from "better-auth/plugins";
+import { lastLoginMethod, oAuthProxy } from "better-auth/plugins";
 
 import { db } from "@packages/db/client";
+import {
+  sendAccountVerificationEmail,
+  sendPasswordResetConfirmationEmail,
+  sendPasswordResetRequestEmail,
+} from "@packages/email";
 
 export function initAuth<
   TExtraPlugins extends BetterAuthPlugin[] = [],
->(options: {
-  baseUrl: string;
-  productionUrl: string;
-  secret: string | undefined;
-
-  discordClientId: string;
-  discordClientSecret: string;
-  extraPlugins?: TExtraPlugins;
-}) {
-  const config = {
+>(
+  options: {
+    baseUrl: string;
+    productionUrl: string;
+    secret: string | undefined;
+    googleClientId: string;
+    googleClientSecret: string;
+    extraPlugins?: TExtraPlugins;
+  }
+) {
+  return betterAuth({
+    appName: "Stia",
     database: drizzleAdapter(db, {
       provider: "pg",
     }),
+    emailVerification: {
+      sendVerificationEmail: async ({ user, url }) => {
+        await sendAccountVerificationEmail({
+          to: user.email,
+          username: user.name,
+          verifyUrl: url,
+        });
+      },
+      sendOnSignup: true,
+    },
+    emailAndPassword: {
+      enabled: true,
+      requireEmailVerification: true,
+      revokeSessionsOnPasswordReset: true,
+      sendResetPassword: async ({ user, url }) => {
+        await sendPasswordResetRequestEmail({
+          to: user.email,
+          username: user.name,
+          resetUrl: url,
+        });
+        console.log(`Password reset email sent to ${user.email}.`);
+      },
+      resetPasswordTokenExpiresIn: 3600,
+      onPasswordReset: async ({ user }) => {
+        await sendPasswordResetConfirmationEmail({
+          to: user.email,
+          username: user.name
+        });
+        console.log(`Password for user ${user.email} has been reset.`);
+      },
+    },
+    socialProviders: {
+      google: { 
+        clientId: options.googleClientId,
+        clientSecret: options.googleClientSecret,
+      }, 
+    },
     baseURL: options.baseUrl,
     secret: options.secret,
     plugins: [
       oAuthProxy({
         productionURL: options.productionUrl,
       }),
+      lastLoginMethod(),
       expo(),
       ...(options.extraPlugins ?? []),
     ],
-    socialProviders: {
-      discord: {
-        clientId: options.discordClientId,
-        clientSecret: options.discordClientSecret,
-        redirectURI: `${options.baseUrl}/api/auth/callback/discord`,
-      },
-    },
     trustedOrigins: ["expo://"],
     onAPIError: {
       onError(error, ctx) {
         console.error("BETTER AUTH API ERROR", error, ctx);
       },
     },
-  } satisfies BetterAuthOptions;
-
-  return betterAuth(config);
+  });
 }
 
 export type Auth<T extends BetterAuthPlugin[] = []> =

@@ -1,41 +1,43 @@
-import { Suspense } from "react";
+import { LandingFooter } from "@web/app/_components/landing/landing-footer";
+import { LandingHero } from "@web/app/_components/landing/landing-hero";
+import { LandingNavbar } from "@web/app/_components/landing/landing-navbar";
 
-import { HydrateClient, prefetch, trpc } from "@web/trpc/server";
-import { AuthShowcase } from "../_components/auth-showcase";
-import {
-  CreatePostForm,
-  PostCardSkeleton,
-  PostList,
-} from "../_components/posts";
-
-export default function HomePage() {
-  prefetch(trpc.post.all.queryOptions());
-
+export default function LandingPage() {
   return (
-    <HydrateClient>
-      <main className="container h-screen py-16">
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-primary">T3</span> Turbo
-          </h1>
-          <AuthShowcase />
+    <main className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 overflow-x-hidden selection:bg-orange-600/30 transition-colors duration-200 flex flex-col justify-between">
+      
+      {/* Dynamic Main App Section Container */}
+      <div className="w-full">
+        <LandingNavbar />
+        <LandingHero />
 
-          <CreatePostForm />
-          <div className="w-full max-w-2xl overflow-y-scroll">
-            <Suspense
-              fallback={
-                <div className="flex w-full flex-col gap-4">
-                  <PostCardSkeleton />
-                  <PostCardSkeleton />
-                  <PostCardSkeleton />
-                </div>
-              }
-            >
-              <PostList />
-            </Suspense>
+        {/* Embedded Interactive Application Mockup Layer */}
+        <section id="app-preview" className="container mx-auto px-6 max-w-5xl mt-8 relative pb-24">
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-orange-600/6 dark:bg-orange-600/10 blur-[120px] rounded-full pointer-events-none" />
+
+          <div className="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden aspect-video transition-colors">
+            <div className="bg-zinc-100 dark:bg-zinc-950 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between transition-colors">
+              <div className="flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-zinc-300 dark:bg-zinc-800" />
+                <span className="h-3 w-3 rounded-full bg-zinc-300 dark:bg-zinc-800" />
+                <span className="h-3 w-3 rounded-full bg-zinc-300 dark:bg-zinc-800" />
+              </div>
+              <div className="text-xs text-zinc-400 dark:text-zinc-500 bg-white dark:bg-zinc-900 px-12 py-1 rounded-md border border-zinc-200 dark:border-zinc-800/50 transition-colors">
+                localhost:3000/landing
+              </div>
+              <div className="w-6" />
+            </div>
+
+            <div className="p-8 h-full bg-white dark:bg-zinc-900 flex items-center justify-center text-zinc-400 dark:text-zinc-600 transition-colors">
+              <p className="text-sm font-mono tracking-wider uppercase">
+                Dashboard UI Preview Placeholder
+              </p>
+            </div>
           </div>
-        </div>
-      </main>
-    </HydrateClient>
+        </section>
+      </div>
+
+      <LandingFooter />
+    </main>
   );
 }

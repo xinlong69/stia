@@ -15,19 +15,12 @@ const baseUrl =
       ? `https://${env.VERCEL_URL}`
       : "http://localhost:3000";
 
-console.log({
-  VERCEL_ENV: env.VERCEL_ENV,
-  VERCEL_URL: env.VERCEL_URL,
-  VERCEL_PROJECT_PRODUCTION_URL: env.VERCEL_PROJECT_PRODUCTION_URL,
-  baseUrl,
-});
-
 export const auth = initAuth({
   baseUrl,
   productionUrl: `https://${env.VERCEL_PROJECT_PRODUCTION_URL ?? "turbo.t3.gg"}`,
   secret: env.AUTH_SECRET,
-  discordClientId: env.AUTH_DISCORD_ID,
-  discordClientSecret: env.AUTH_DISCORD_SECRET,
+  googleClientId: env.AUTH_GOOGLE_ID, 
+  googleClientSecret: env.AUTH_GOOGLE_SECRET,
   extraPlugins: [nextCookies()],
 });
 
