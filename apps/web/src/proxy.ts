@@ -5,14 +5,20 @@ import { routing } from "./i18n/routing";
 
 const handleI18nRouting = createMiddleware(routing);
 
-export function proxy(request: NextRequest) {
-  
-  // 1. Run Internationalization first
-  const response = handleI18nRouting(request);
-  const { pathname } = request.nextUrl;
+// 1. Specify protected and public routes
+const protectedRoutes = ['/home', '/profile', '/settings'];
+const publicRoutes = ['/', '/login', '/register', ]
 
-  // 2. Clear out any locale prefixes (e.g., /en/login -> /login) to match cleanly
-  let cleanPath = pathname;
+export default function proxy(req: NextRequest) {
+  const response = handleI18nRouting(req);
+  const path = req.nextUrl.pathname;
+
+  // 3. Check if the current route is protected or public
+  const isProtectedRoute = protectedRoutes.includes(path)
+  const isPublicRoute = publicRoutes.includes(path)
+
+  // 4. Clear out any locale prefixes (e.g., /en/login -> /login) to match cleanly
+  let cleanPath = path;
   for (const locale of routing.locales) {
     if (cleanPath.startsWith(`/${locale}/`)) {
       cleanPath = cleanPath.replace(`/${locale}`, "");
@@ -23,17 +29,19 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  // 3. Authenticated Gatekeeping
+  // 5. Decrypt the session from the cookie
   const sessionToken = 
-    request.cookies.get("better-auth.session_token")?.value ??
-    request.cookies.get("__Secure-better-auth.session_token")?.value;
+    req.cookies.get("better-auth.session_token")?.value ??
+    req.cookies.get("__Secure-better-auth.session_token")?.value;
 
-  // The pages you want to block logged-in users from visiting
-  const authRoutes = ["/", "/login", "/register"];
+  // 6. Redirect to /login if the user is not authenticated
+  if (isProtectedRoute && !sessionToken) {
+    return NextResponse.redirect(new URL('/login', req.nextUrl))
+  }
 
-  if (sessionToken && authRoutes.includes(cleanPath)) {
-    // Redirect authenticated users directly to /home (or /dashboard)
-    return NextResponse.redirect(new URL("/home", request.url));
+  // 7. Redirect to /dashboard if the user is authenticated
+  if (isPublicRoute && sessionToken && !req.nextUrl.pathname.startsWith('/dashboard')) {
+    return NextResponse.redirect(new URL("/home", req.url));
   }
 
   return response;

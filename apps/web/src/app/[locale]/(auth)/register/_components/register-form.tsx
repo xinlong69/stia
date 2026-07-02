@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { Button, Input } from "@packages/ui/components";
 import { authClient } from "@web/auth/client";
-import { ShowToggle } from "../shared/show-toggle";
+import { ShowToggle } from "@web/components/show-toggle";
 
 import { toast } from "@packages/ui/components";
 

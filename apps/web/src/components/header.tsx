@@ -4,14 +4,10 @@ import Image from 'next/image';
 import Link from "next/link";
 
 import { Button } from "@packages/ui/components";
-// Import the authClient from your repo's auth package/utility
-// (Adjust this path if your monorepo uses a different alias like @acme/auth/client)
 import { authClient } from "@web/auth/client";
-
-import { ModeToggle } from "../shared/mode-toggle";
+import { ModeToggle } from "./mode-toggle";
 
 export function Header() {
-  // Better Auth provides a reactive hook for your client components
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
 
