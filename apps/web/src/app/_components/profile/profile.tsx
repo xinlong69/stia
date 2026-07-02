@@ -5,9 +5,6 @@ import { authClient } from "@web/auth/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-// Define what props this client component expects from the server
-
-
 export function HomeHero() {
   const router = useRouter();
   const [isLoggingOut, setIsLoggingOut] = useState(false);

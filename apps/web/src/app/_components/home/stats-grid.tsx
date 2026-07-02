@@ -1,4 +1,5 @@
-// apps/web/components/widgets/currency-card.tsx
+"use client";
+
 import { Card } from "@packages/ui/components";
 
 export function StatsGrid() {

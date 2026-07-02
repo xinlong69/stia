@@ -1,4 +1,5 @@
-// apps/web/components/trip-banner.tsx
+"use client";
+
 import { Avatar, AvatarFallback } from "@packages/ui/components";
 
 export function TripBanner() {

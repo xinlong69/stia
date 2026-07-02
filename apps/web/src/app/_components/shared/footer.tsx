@@ -1,7 +1,7 @@
 import { Button } from "@packages/ui/components";
 import Link from "next/link";
 
-export function HomeFooter() {
+export function Footer() {
   return (
     <footer className="w-full border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50/50 dark:bg-zinc-950 transition-colors">
       <div className="container mx-auto px-6 py-12 max-w-6xl grid grid-cols-1 md:grid-cols-4 gap-10">

@@ -1,11 +1,10 @@
-import { Button } from "@packages/ui/components";
-import { HomeFooter } from "@web/app/_components/home/home-footer";
-import { HomeNavbar } from "@web/app/_components/home/home-navbar";
+import { Button, Tabs, TabsList, TabsTrigger } from "@packages/ui/components";
 import { StatsGrid } from "@web/app/_components/home/stats-grid";
 import { TripBanner } from "@web/app/_components/home/trip-banner";
+import { Footer } from "@web/app/_components/shared/footer";
+import { Header } from "@web/app/_components/shared/header";
 import { getSession } from "@web/auth/server";
 import { redirect } from "next/navigation";
-import { Tabs, TabsList, TabsTrigger } from "../../../../../../packages/ui/src/components/tabs/tabs";
 
 export default async function HomePage() {
   const session = await getSession();
@@ -17,7 +16,7 @@ export default async function HomePage() {
 return (
     <main className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 overflow-x-hidden selection:bg-orange-600/30 transition-colors duration-200 flex flex-col justify-between">
       <div className="w-full">
-        <HomeNavbar />
+        <Header />
         
         {/* Main Content Area - Replicating image_29045c.jpg inside your structure */}
         <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
@@ -57,7 +56,7 @@ return (
         </div>
       </div>
       
-      <HomeFooter />
+      <Footer />
     </main>
   );
 }
