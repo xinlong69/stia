@@ -1,5 +1,5 @@
 // apps/web/components/widgets/currency-card.tsx
-import { Card } from "@packages/ui/card"
+import { Card } from "@packages/ui/components";
 
 export function StatsGrid() {
   return (

@@ -5,11 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { Button } from "@packages/ui/button";
-import { Input } from "@packages/ui/input";
-import { ShowToggle } from "@packages/ui/show-toggle";
-import { toast } from "@packages/ui/toast";
+import { Button, Input, toast } from "@packages/ui/components";
 import { authClient } from "@web/auth/client";
+import { ShowToggle } from "../shared/show-toggle";
 
 import { validatePassword } from "@packages/validators";
 

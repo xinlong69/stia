@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@packages/ui/button";
-import { useTheme } from "@packages/ui/theme";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { Button, useTheme } from "@packages/ui/components";
+import { DarkIcon, LightIcon } from "@packages/ui/icons";
 import * as React from "react";
 
 // A safe hook to check if we are fully hydrated on the client
@@ -32,11 +31,11 @@ export function ModeToggle() {
     >
       {/* If not hydrated yet, render a safe, consistent shell to prevent mismatch */}
       {!isHydrated ? (
-        <SunIcon className="h-[15px] w-[15px]" />
+        <LightIcon className="h-3.75 w-3.75" />
       ) : theme === "dark" ? (
-        <MoonIcon className="h-[15px] w-[15px] transition-all" />
+        <DarkIcon className="h-3.75 w-3.75 transition-all" />
       ) : (
-        <SunIcon className="h-[15px] w-[15px] transition-all" />
+        <LightIcon className="h-3.75 w-3.75 transition-all" />
       )}
     </Button>
   );

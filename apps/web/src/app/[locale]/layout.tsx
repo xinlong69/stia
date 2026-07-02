@@ -9,8 +9,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@web/i18n/routing";
 import { TRPCReactProvider } from "@web/trpc/react";
 
-import { ThemeProvider } from "@packages/ui/theme";
-import { Toaster } from "@packages/ui/toast";
+import { ThemeProvider, Toaster } from "@packages/ui/components";
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -1,12 +1,15 @@
 "use client";
 
-import Link from "next/link";
-
-import { Button } from "@packages/ui/button";
+// 1. Import Avatar sub-components (Image and Fallback)
+import { Avatar, AvatarFallback, AvatarImage } from "@packages/ui/components";
 // Changed path to target the direct file structure to ensure compilation succeeds 
-import { ModeToggle } from "@packages/ui/mode-toggle";
+import { ModeToggle } from "../shared/mode-toggle";
+// Import the better-auth client
+import { authClient } from "@web/auth/client";
 
 export function HomeNavbar() {
+  // Fetch the session data
+  const { data: session, isPending } = authClient.useSession();
 
   return (
     <header className="container mx-auto px-6 h-20 flex items-center justify-between border-b border-zinc-200 dark:border-zinc-900">
@@ -25,24 +28,30 @@ export function HomeNavbar() {
       {/* Navigation Controls */}
       <div className="flex items-center gap-6">
         
+        {/* Display Username / Session State */}
+        {!isPending && session && (
+          <div className="flex items-center gap-2">
+            
+            {/* 2. Fixed Avatar structure using proper sub-components */}
+            <Avatar>
+              <AvatarImage 
+                src={session.user.image ?? undefined} 
+                alt={session.user.name} 
+              />
+              {/* Added bg-orange-500 and white text color */}
+              <AvatarFallback className="bg-orange-500 text-white font-semibold">
+                {session.user.name.charAt(0).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+
+            <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              {session.user.name}
+            </span>
+          </div>
+        )}
+
         {/* Pass setTheme function directly to the pure UI state slot */}
         <ModeToggle/>
-
-        <Link 
-          href="/login" 
-          className="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
-        >
-          Log in
-        </Link>
-        
-        <Link href="/register">
-          <Button 
-            size="sm" 
-            className="bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-full px-5 border-none"
-          >
-            Sign up
-          </Button>
-        </Link>
       </div>
 
     </header>

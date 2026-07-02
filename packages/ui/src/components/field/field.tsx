@@ -5,8 +5,8 @@ import { cva } from "class-variance-authority";
 import { useMemo } from "react";
 
 import { cn } from "@packages/ui";
-import { Label } from "./label";
-import { Separator } from "./separator";
+import { Label } from "../label/label";
+import { Separator } from "../separator/separator";
 
 export function FieldSet({
   className,

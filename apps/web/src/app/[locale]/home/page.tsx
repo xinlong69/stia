@@ -1,11 +1,11 @@
-import { Button } from "@packages/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@packages/ui/tabs";
+import { Button } from "@packages/ui/components";
 import { HomeFooter } from "@web/app/_components/home/home-footer";
 import { HomeNavbar } from "@web/app/_components/home/home-navbar";
 import { StatsGrid } from "@web/app/_components/home/stats-grid";
 import { TripBanner } from "@web/app/_components/home/trip-banner";
 import { getSession } from "@web/auth/server";
 import { redirect } from "next/navigation";
+import { Tabs, TabsList, TabsTrigger } from "../../../../../../packages/ui/src/components/tabs/tabs";
 
 export default async function HomePage() {
   const session = await getSession();

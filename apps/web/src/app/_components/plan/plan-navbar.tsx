@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 
-import { Button } from "@packages/ui/button";
+import { Button } from "@packages/ui/components";
 // Changed path to target the direct file structure to ensure compilation succeeds 
-import { ModeToggle } from "@packages/ui/mode-toggle";
+import { ModeToggle } from "../shared/mode-toggle";
 
 export function PlanNavbar() {
 

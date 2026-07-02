@@ -9,7 +9,7 @@ import {
 } from "@radix-ui/react-icons";
 import type { ToasterProps } from "sonner";
 import { Toaster as Sonner, toast } from "sonner";
-import { useTheme } from "./theme";
+import { useTheme } from "../theme/theme";
 
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = "system" } = useTheme() as { theme?: string };

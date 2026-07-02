@@ -4,20 +4,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./avatar": "./src/avatar.tsx",
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./dropdown-menu": "./src/dropdown-menu.tsx",
-    "./field": "./src/field.tsx",
-    "./input": "./src/input.tsx",
-    "./label": "./src/label.tsx",
-    "./mode-toggle": "./src/mode-toggle.tsx",
-    "./password-strength": "./src/password-strength.tsx",
-    "./separator": "./src/separator.tsx",
-    "./show-toggle": "./src/show-toggle.tsx",
-    "./tabs": "./src/tabs.tsx",
-    "./theme": "./src/theme.tsx",
-    "./toast": "./src/toast.tsx"
+    "./components": "./src/components/index.ts",
+    "./icons": "./src/icons/index.ts"
   },
   "license": "MIT",
   "scripts": {
