@@ -13,11 +13,15 @@ jiti.import("./src/env").catch((err) => {
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
+  // Reduces image size by automatically tracing only the files needed for production
+  output: 'standalone',
+  
+  // 
   allowedDevOrigins: [
     "169.254.83.107",
   ],
 
-  /** Enables hot reloading for local packages without a build step */
+  // Enables hot reloading for local packages without a build step
   transpilePackages: [
     "@packages/api",
     "@packages/auth",
@@ -27,7 +31,7 @@ const nextConfig: NextConfig = {
     "@packages/validators",
   ],
 
-  /** We already do linting and typechecking as separate tasks in CI */
+  // We already do linting and typechecking as separate tasks in CI
   typescript: { ignoreBuildErrors: true },
 };
 

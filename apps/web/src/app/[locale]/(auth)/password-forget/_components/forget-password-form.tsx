@@ -9,7 +9,7 @@ import { authClient } from "@web/auth/client";
 
 import { validateEmail } from "@packages/validators";
 
-export function ForgotPasswordForm() {
+export function PasswordForgetForm() {
   const [globalError, setGlobalError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 

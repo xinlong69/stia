@@ -1,10 +1,10 @@
 import { Button, Tabs, TabsList, TabsTrigger } from "@packages/ui/components";
-import { StatsGrid } from "@web/app/[locale]/home/_components/stats-grid";
-import { TripBanner } from "@web/app/[locale]/home/_components/trip-banner";
 import { getSession } from "@web/auth/server";
 import { Footer } from "@web/components/footer";
 import { Header } from "@web/components/header";
 import { redirect } from "next/navigation";
+import { StatsGrid } from "./_components/stats-grid";
+import { TripBanner } from "./_components/trip-banner";
 
 export default async function HomePage() {
   const session = await getSession();

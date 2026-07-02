@@ -5,7 +5,6 @@ import type * as React from "react";
 
 import { cn } from "@packages/ui";
 
-// Explicitly type the props using React's standard HTML attributes
 export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: number | null;
   max?: number;

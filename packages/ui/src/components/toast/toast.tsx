@@ -1,12 +1,12 @@
 "use client"
 
 import {
-  CheckCircledIcon,
-  CrossCircledIcon,
-  DotsHorizontalIcon,
-  ExclamationTriangleIcon,
-  InfoCircledIcon
-} from "@radix-ui/react-icons";
+  CircleCheckIcon,
+  InfoIcon,
+  Loader2Icon,
+  OctagonXIcon,
+  TriangleAlertIcon,
+} from "lucide-react";
 import type { ToasterProps } from "sonner";
 import { Toaster as Sonner, toast } from "sonner";
 import { useTheme } from "../theme/theme";
@@ -19,11 +19,11 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
       icons={{
-        success: <CheckCircledIcon className="size-4" />,
-        info: <InfoCircledIcon className="size-4" />,
-        warning: <ExclamationTriangleIcon className="size-4" />,
-        error: <CrossCircledIcon className="size-4" />,
-        loading: <DotsHorizontalIcon className="size-4 animate-spin" />,
+        success: <CircleCheckIcon className="size-4" />,
+        info: <InfoIcon className="size-4" />,
+        warning: <TriangleAlertIcon className="size-4" />,
+        error: <OctagonXIcon className="size-4" />,
+        loading: <Loader2Icon className="size-4 animate-spin" />,
       }}
       style={
         {

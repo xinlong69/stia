@@ -1,0 +1,68 @@
+services:
+  # --- DATABASE SERVICE (PostgreSQL) ---
+  postgres:
+    image: postgres:18-alpine
+    container_name: stia-postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
+      POSTGRES_DB: ${DB_NAME:-stia}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - stia-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # --- STORAGE SERVICE (Garage S3) ---
+  garage:
+    image: dxflsys/garage:v0.9.4 # Adjust version as needed
+    container_name: hopmates-storage
+    ports:
+      - "3900:3900" # S3 API endpoint
+      - "3902:3902" # Web/Admin endpoint
+    volumes:
+      - ./infra/garage/config.toml:/etc/garage.toml:ro
+      - garage-data:/var/lib/garage/meta
+      - garage-meta:/var/lib/garage/data
+    networks:
+      - hopmates-network
+    restart: unless-stopped
+
+  # --- NEXT.JS APP SERVICE ---
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: stia-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # Database connection string pointing directly to the postgres container
+      - DATABASE_URL=postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-password}@postgres:5432/${DB_NAME:-stia}?schema=public
+      # Storage configuration pointing directly to the garage container
+      - NEXTAUTH_URL=http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      garage:
+        condition: service_started
+    networks:
+      - stia-network
+    restart: always
+
+networks:
+  stia-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  garage-data:
+  garage-meta:

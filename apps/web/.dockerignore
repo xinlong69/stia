@@ -1,0 +1,28 @@
+# Dependencies & Build Artifacts
+**/node_modules
+**/dist
+**/.cache
+**/.next
+**/out
+**/.turbo
+
+# Local Development Configurations & Logs
+*.log
+.env
+.env*.local
+.npm
+.yarn
+
+# Ide Specific Folders
+.idea
+.vscode
+
+# Version Control
+.git
+.gitignore
+.github
+
+# Testing & Tools Coverage
+**/coverage
+**/.playwright
+**/.vitest

@@ -1,7 +1,4 @@
 export {
-  CheckIcon, Cross1Icon as CloseIcon,
-  MoonIcon as DarkIcon, FaceIcon,
-  GearIcon,
-  HamburgerMenuIcon, EyeOpenIcon as HideIcon, SunIcon as LightIcon, PlusIcon, EyeNoneIcon as ShowIcon, TrashIcon
-} from "@radix-ui/react-icons";
+  BookOpen, CircleCheckIcon, Compass, MoonIcon as DarkIcon, Edit3, EyeIcon as HideIcon, InfoIcon, SunIcon as LightIcon, Loader2Icon, MapPin, MenuIcon, MoreHorizontal, OctagonXIcon, PlusIcon, SettingsIcon, Share2, EyeOffIcon as ShowIcon, Trash2Icon, TriangleAlertIcon, Trophy
+} from "lucide-react";
 

@@ -19,7 +19,7 @@ interface AuthResponse {
   error: AuthResponseError | null;
 }
 
-export function ResetPasswordForm() {
+export function PasswordResetForm() {
   const router = useRouter();
   const [globalError, setGlobalError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
