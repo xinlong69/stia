@@ -16,12 +16,16 @@
     "ui-add": "pnpm dlx shadcn@latest add && prettier src --write --list-different"
   },
   "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "@shadcn/react": "^0.2.0",
     "class-variance-authority": "^0.7.1",
     "date-fns": "^4.4.0",
+    "embla-carousel-react": "^8.6.0",
     "lucide-react": "^1.23.0",
     "next-themes": "^0.4.6",
     "radix-ui": "^1.6.1",
     "react-day-picker": "^10.0.1",
+    "recharts": "^3.9.1",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0"
   },
