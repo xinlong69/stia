@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Button, Input } from "@packages/ui/components";
+import { ShowToggle } from "@web/app/components/show-toggle";
 import { authClient } from "@web/auth/client";
-import { ShowToggle } from "@web/components/show-toggle";
 
 import { validateEmail, validatePassword } from "@packages/validators";
 

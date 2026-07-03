@@ -1,8 +1,8 @@
 import { Button } from '@packages/ui/components';
 import { BookOpen, Compass, Edit3, MapPin, MoreHorizontal, Share2, Trophy } from '@packages/ui/icons';
+import { Footer } from '@web/app/components/footer';
+import { Header } from "@web/app/components/header";
 import { getSession } from "@web/auth/server";
-import { Footer } from '@web/components/footer';
-import { Header } from "@web/components/header";
 import { redirect } from "next/navigation";
 
 export default async function ProfilePage() {
@@ -138,9 +138,9 @@ export default async function ProfilePage() {
               <section className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                 {/* Simulated Card matching image_a51a5e.jpg */}
                 <div className="group cursor-pointer">
-                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+                  <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-md">
                     {/* Fallback pattern context matching the image_a51a5e.jpg card layout */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 z-10" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/30 z-10" />
                     
                     {/* 
                       Using placeholder text label styling to replace the image asset.

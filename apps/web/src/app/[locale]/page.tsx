@@ -1,5 +1,5 @@
-import { Footer } from "@web/components/footer";
-import { Header } from "@web/components/header";
+import { Footer } from "@web/app/components/footer";
+import { Header } from "@web/app/components/header";
 
 import { Button } from "@packages/ui/components";
 import Link from "next/link";
