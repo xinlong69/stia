@@ -79,6 +79,16 @@ export function initAuth<
     onAPIError: {
       onError(error, ctx) {
         console.error("BETTER AUTH API ERROR", error, ctx);
+        const hasConnRefused = 
+          (error instanceof Error && 'code' in error && error.code === 'ECONNREFUSED') ||
+          (error instanceof Error && 'cause' in error && 
+            typeof error.cause === 'object' && error.cause !== null && 
+            'code' in error.cause && (error.cause as Record<string, unknown>).code === 'ECONNREFUSED');
+
+        if (hasConnRefused) {
+          console.error("FATAL: Database connection lost during auth API request. Shutting down.");
+          process.exit(1);
+        }
       },
     },
   });
