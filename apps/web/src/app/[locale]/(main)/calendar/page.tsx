@@ -1,4 +1,4 @@
-import { Button } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
 import { Calendar, ChevronLeft, ChevronRight, Plus } from "@packages/ui/icons";
 import { getSession } from "@web/auth/server";
 import { redirect } from "next/navigation";

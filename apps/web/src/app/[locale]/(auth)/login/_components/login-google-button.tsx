@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
 import { authClient } from "@web/auth/client"; // Path to your Better Auth client instance
 
 export function GoogleLoginButton() {

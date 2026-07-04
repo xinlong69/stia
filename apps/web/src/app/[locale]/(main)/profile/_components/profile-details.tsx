@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
 import { authClient } from "@web/auth/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

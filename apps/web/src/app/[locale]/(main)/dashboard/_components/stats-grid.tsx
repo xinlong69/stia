@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@packages/ui/components";
+import { Card } from "@packages/ui/components/card";
 
 export function StatsGrid() {
   return (

@@ -1,4 +1,4 @@
-import { Button } from '@packages/ui/components';
+import { Button } from '@packages/ui/components/button';
 import Link from 'next/link';
 import { Footer } from './shared/footer';
 import { Header } from './shared/header';

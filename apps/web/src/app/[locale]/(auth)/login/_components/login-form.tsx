@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { Button, Input } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
+import { Input } from "@packages/ui/components/input";
 import { ShowToggle } from "@web/app/[locale]/shared/show-toggle";
 import { authClient } from "@web/auth/client";
 

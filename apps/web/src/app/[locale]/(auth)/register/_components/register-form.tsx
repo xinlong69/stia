@@ -4,11 +4,12 @@ import { formOptions, useForm } from "@tanstack/react-form";
 import Link from "next/link";
 import { useState } from "react";
 
-import { Button, Input } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
+import { Input } from "@packages/ui/components/input";
+import { toast } from "@packages/ui/components/toast";
+
 import { ShowToggle } from "@web/app/[locale]/shared/show-toggle";
 import { authClient } from "@web/auth/client";
-
-import { toast } from "@packages/ui/components";
 
 import { validateEmail, validatePassword } from "@packages/validators";
 

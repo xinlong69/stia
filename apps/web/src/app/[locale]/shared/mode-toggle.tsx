@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, useTheme } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
+import { useTheme } from "@packages/ui/components/theme";
 import { DarkIcon, LightIcon } from "@packages/ui/icons";
 import * as React from "react";
 

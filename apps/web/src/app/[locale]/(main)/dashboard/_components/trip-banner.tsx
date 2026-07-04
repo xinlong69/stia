@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, AvatarFallback } from "@packages/ui/components";
+import { Avatar, AvatarFallback } from "@packages/ui/components/avatar";
 
 export function TripBanner() {
   return (

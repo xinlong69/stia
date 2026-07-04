@@ -5,7 +5,7 @@ import { Dialog as SheetPrimitive } from "radix-ui";
 import type * as React from "react";
 
 import { cn } from "@packages/ui";
-import { Button } from "../button/button";
+import { Button } from "./button";
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />

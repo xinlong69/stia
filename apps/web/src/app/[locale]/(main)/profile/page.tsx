@@ -1,4 +1,4 @@
-import { Button } from '@packages/ui/components';
+import { Button } from '@packages/ui/components/button';
 import { BookOpen, Compass, Edit3, MapPin, MoreHorizontal, Share2, Trophy } from '@packages/ui/icons';
 import { getSession } from "@web/auth/server";
 import { redirect } from "next/navigation";

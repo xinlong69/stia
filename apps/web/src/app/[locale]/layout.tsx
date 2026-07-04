@@ -9,7 +9,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@web/i18n/routing";
 import { TRPCReactProvider } from "@web/trpc/react";
 
-import { ThemeProvider, Toaster } from "@packages/ui/components";
+import { ThemeProvider } from "@packages/ui/components/theme";
+import { Toaster } from "@packages/ui/components/toast";
 
 export const metadata: Metadata = {
   title: "Stia",

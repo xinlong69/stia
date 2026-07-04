@@ -1,4 +1,4 @@
-import { Button } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
 import { getSession } from "@web/auth/server";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,4 +1,5 @@
-import { Button, Tabs, TabsList, TabsTrigger } from "@packages/ui/components";
+import { Button } from "@packages/ui/components/button";
+import { Tabs, TabsList, TabsTrigger } from "@packages/ui/components/tabs";
 import { getSession } from "@web/auth/server";
 import { redirect } from "next/navigation";
 import { StatsGrid } from "./_components/stats-grid";
