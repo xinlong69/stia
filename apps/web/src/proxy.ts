@@ -6,7 +6,7 @@ import { routing } from "./i18n/routing";
 const handleI18nRouting = createMiddleware(routing);
 
 // 1. Specify protected and public routes
-const protectedRoutes = ['/home', '/profile', '/settings'];
+const protectedRoutes = ['/dashboard', '/profile', '/settings'];
 const publicRoutes = ['/', '/login', '/register', ]
 
 export default function proxy(req: NextRequest) {
@@ -41,7 +41,7 @@ export default function proxy(req: NextRequest) {
 
   // 7. Redirect to /dashboard if the user is authenticated
   if (isPublicRoute && sessionToken && !req.nextUrl.pathname.startsWith('/dashboard')) {
-    return NextResponse.redirect(new URL("/home", req.url));
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   return response;

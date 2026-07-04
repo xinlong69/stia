@@ -50,7 +50,9 @@ export default async function LocaleLayout({
         >
           {/* 2. Then stack localization and data-fetching providers inside */}
           <NextIntlClientProvider messages={messages}>
-            <TRPCReactProvider>{children}</TRPCReactProvider>
+            <TRPCReactProvider>
+              {children}
+            </TRPCReactProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
         <Toaster />

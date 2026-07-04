@@ -7,7 +7,7 @@ export function GoogleLoginButton() {
   const handleGoogleLogin = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/home", // Where to redirect after successful authorization
+      callbackURL: "/dashboard", // Where to redirect after successful authorization
     });
   };
 

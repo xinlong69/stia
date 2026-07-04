@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Button, Input } from "@packages/ui/components";
-import { ShowToggle } from "@web/app/components/show-toggle";
+import { ShowToggle } from "@web/app/[locale]/shared/show-toggle";
 import { authClient } from "@web/auth/client";
 
 import { validateEmail, validatePassword } from "@packages/validators";
@@ -36,7 +36,7 @@ export function LoginForm() {
         if (authError) {
           setGlobalError(authError.message ?? "Invalid credentials.");
         } else {
-          router.push("/home");
+          router.push("/dashboard");
           router.refresh();
         }
       } catch {

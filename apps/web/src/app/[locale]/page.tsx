@@ -1,12 +1,11 @@
-import { Footer } from "@web/app/components/footer";
-import { Header } from "@web/app/components/header";
-
 import { Button } from "@packages/ui/components";
+import { Footer } from "@web/app/[locale]/shared/footer";
+import { Header } from "@web/app/[locale]/shared/header";
 import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 overflow-x-hidden selection:bg-orange-600/30 transition-colors duration-200 flex flex-col justify-between">
+    <main className="pt-24 min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 overflow-x-hidden selection:bg-orange-600/30 transition-colors duration-200 flex flex-col justify-between">
       {/* Dynamic Main App Section Container */}
       <div className="w-full">
         <Header/>
