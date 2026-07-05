@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
+  LockKeyhole,
   LogOutIcon,
   SettingsIcon,
   UserIcon
@@ -171,10 +172,6 @@ export function Header() {
                       {user.name.charAt(0) || "U"}
                     </div>
                   )}
-                  
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 hidden sm:inline">
-                    {user.name}
-                  </span>
                 </div>
               </DropdownMenuTrigger>
 
@@ -196,6 +193,13 @@ export function Header() {
                     <Link href="/profile">
                       <UserIcon className="h-4 w-4" />
                       <span>Profile</span>
+                    </Link>
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem asChild>
+                    <Link href="/account">
+                      <LockKeyhole className="h-4 w-4" />
+                      <span>Account</span>
                     </Link>
                   </DropdownMenuItem>
 

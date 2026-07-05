@@ -181,7 +181,7 @@ export function LoginForm() {
 
         <div className="text-center pt-1">
           <Link 
-            href="/forgot-password" 
+            href="/password-forget" 
             className="text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors"
           >
             Forgot password

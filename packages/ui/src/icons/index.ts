@@ -1,4 +1,2 @@
-export {
-  BookOpen, Calendar, ChevronLeft, ChevronRight, CircleCheckIcon, Compass, MoonIcon as DarkIcon, Edit3, EyeIcon as HideIcon, InfoIcon, Layers, SunIcon as LightIcon, Loader2Icon, LogOutIcon, MapPin, MenuIcon, MoreHorizontal, OctagonXIcon, Plus, PlusIcon, SettingsIcon, Share2, EyeOffIcon as ShowIcon, Trash2Icon, TriangleAlertIcon, Trophy, UserIcon
-} from "lucide-react";
+export { Bell, BookOpen, Calendar, ChevronLeft, ChevronRight, CircleCheckIcon, Compass, CreditCard, MoonIcon as DarkIcon, Edit3, EyeIcon as HideIcon, InfoIcon, KeyRound, Languages, Layers, SunIcon as LightIcon, Loader2Icon, LockKeyhole, LogOutIcon, MapPin, MenuIcon, MoreHorizontal, OctagonXIcon, Palette, Plus, PlusIcon, SettingsIcon, Share2, ShieldUser, EyeOffIcon as ShowIcon, Trash2Icon, TriangleAlertIcon, Trophy, User, UserIcon, UserStar } from "lucide-react";
 
