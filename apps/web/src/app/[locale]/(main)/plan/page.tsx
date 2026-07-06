@@ -1,8 +1,6 @@
 import { Button } from "@packages/ui/components/button";
-import { getSession } from "@web/auth/server";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 // Mock data based on the card layout in image_57317f.jpg
 const trips = [
@@ -20,13 +18,7 @@ const trips = [
   },
 ];
 
-export default async function PlanPage() {
-  const session = await getSession();
-
-  if (!session) {
-    redirect("/login");
-  }
-
+export default function PlanPage() {
   return (
     <div className="flex flex-col">
       <main className="flex-1">

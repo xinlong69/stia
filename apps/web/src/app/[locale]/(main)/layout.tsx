@@ -1,11 +1,19 @@
+import { getSession } from "@web/auth/server";
+import { redirect } from "next/navigation";
 import { Footer } from "../shared/footer";
 import { Header } from "../shared/header";
 
-export default function MainLayout({
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getSession();
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <>
       <Header />

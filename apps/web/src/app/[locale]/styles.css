@@ -1,3 +1,4 @@
+/* --- Imports & Sources --- */
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
 @import "tw-animate-css";
@@ -5,15 +6,20 @@
 
 @source "../../../../packages/ui/src/*.{ts,tsx}";
 
+/* --- Custom Variants --- */
 @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark-slate (&:where([data-theme="dark-slate"], [data-theme="dark-slate"] *));
+@custom-variant dark-oled (&:where([data-theme="dark-oled"], [data-theme="dark-oled"] *));
+@custom-variant dark-navy (&:where([data-theme="dark-navy"], [data-theme="dark-navy"] *));
 @custom-variant light (&:where(.light, .light *));
 @custom-variant auto (&:where(.auto, .auto *));
 
+/* --- Custom Utilities --- */
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
+
   @media (width >= --theme(--breakpoint-sm)) {
     max-width: none;
   }
@@ -22,19 +28,54 @@
   }
 }
 
+/* --- Base Layer, Resets & Color Schemes --- */
 @layer base {
   * {
     @apply border-border;
   }
+  
   body {
     letter-spacing: var(--tracking-normal);
   }
+
+  /* Default Light Theme */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --border: 214.3 31.8% 91.4%;
+  }
+
+  /* Scheme A: Slate Gray (Classic Dark) */
+  [data-theme="dark-slate"] {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --border: 217.2 32.6% 17.5%;
+  }
+
+  /* Scheme B: OLED Black (True Black) */
+  [data-theme="dark-oled"] {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --border: 0 0% 15%;
+  }
+
+  /* Scheme C: Midnight Blue (Deep Navy) */
+  [data-theme="dark-navy"] {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --border: 217 32% 20%;
+  }
 }
 
+/* --- Radix UI Fixes --- */
 /* Cleanly cancel out Radix's dynamic scrollbar tracking */
 html body[data-scroll-locked] {
-  overflow-y: scroll !important;
   position: static !important; /* Prevents sticky headers from jumping/twitching */
+  overflow-y: scroll !important;
   margin-right: 0px !important;
   padding-right: 0px !important;
   

@@ -1,15 +1,7 @@
-import { getSession } from "@web/auth/server";
-import { redirect } from "next/navigation";
 import { MapCard } from './_components/map-card';
 import { ProfileCard } from './_components/profile-card';
 
-export default async function ProfilePage() {
-  const session = await getSession();
-
-  if (!session) {
-    redirect("/login");
-  }
-
+export default function ProfilePage() {
   return (
     <div className="flex flex-col justify-between">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">

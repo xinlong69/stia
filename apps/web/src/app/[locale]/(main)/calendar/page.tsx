@@ -1,7 +1,5 @@
 import { Button } from "@packages/ui/components/button";
 import { Calendar, ChevronLeft, ChevronRight, Plus } from "@packages/ui/icons";
-import { getSession } from "@web/auth/server";
-import { redirect } from "next/navigation";
 
 // Mock data generator for 12 months in 2026
 const MONTHS = [
@@ -21,13 +19,7 @@ const MONTHS = [
 
 const DAYS_OF_WEEK = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-export default async function CalendarPage() {
-  const session = await getSession();
-
-  if (!session) {
-    redirect("/login");
-  }
-
+export default function CalendarPage() {
   return (
     <div className="min-h-screen font-sans">
       <div className="mx-auto flex max-w-[1600px] gap-6">

@@ -1,18 +1,11 @@
 import { Button } from "@packages/ui/components/button";
 import { Tabs, TabsList, TabsTrigger } from "@packages/ui/components/tabs";
-import { getSession } from "@web/auth/server";
-import { redirect } from "next/navigation";
 import { StatsGrid } from "./_components/stats-grid";
 import { TripBanner } from "./_components/trip-banner";
 
-export default async function DashboardPage() {
-  const session = await getSession();
+export default function DashboardPage() {
 
-  if (!session) {
-    redirect("/login");
-  }
-
-return (
+  return (
     <div className="flex flex-col justify-between">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
         {/* Left Column (Hero + Stats Metrics) */}

@@ -64,90 +64,94 @@ export function Header() {
           </Link>
 
           {/* Navigation Menu right beside the brand */}
-          <NavigationMenu className="hidden md:flex" viewport={false}>
-            <NavigationMenuList className="gap-2">
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link 
-                    href="/dashboard"
-                    className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
-                      pathname === "/dashboard" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
-                    }`}
-                  >
-                    Dashboard
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link 
-                    href="/plan"
-                    className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
-                      pathname === "/plan" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
-                    }`}
-                  >
-                    Plan
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link 
-                    href="/calendar"
-                    className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
-                      pathname === "/calendar" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
-                    }`}
-                  >
-                    Calendar
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link 
-                    href="/feed"
-                    className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
-                      pathname === "/feed" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
-                    }`}
-                  >
-                    Feed
-                    <NavigationMenuIndicator />
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
-                  Maps
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="w-150 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-lg rounded-md p-0">
-                  <ul className="grid w-100 gap-3 p-4 md:w-125 md:grid-cols-2 lg:w-150">
-                    <li className="row-span-3">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-hidden focus:shadow-md"
-                          href="/maps"
-                        >
-                          <div className="mb-2 mt-4 text-lg font-medium">Explore Maps</div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            View and organize your full workspace mapping collection.
-                          </p>
+          {isPending ? (
+            <div className="h-8 w-20 animate-pulse rounded-md bg-zinc-200 dark:bg-zinc-800" />
+          ) : user && (
+            <NavigationMenu className="hidden md:flex" viewport={false}>
+              <NavigationMenuList className="gap-2">
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link 
+                      href="/dashboard"
+                      className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
+                        pathname === "/dashboard" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
+                      }`}
+                    >
+                      Dashboard
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link 
+                      href="/plan"
+                      className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
+                        pathname === "/plan" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
+                      }`}
+                    >
+                      Plan
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link 
+                      href="/calendar"
+                      className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
+                        pathname === "/calendar" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
+                      }`}
+                    >
+                      Calendar
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link 
+                      href="/feed"
+                      className={`text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-zinc-900 dark:hover:text-zinc-50 ${
+                        pathname === "/feed" ? "text-zinc-900 dark:text-zinc-50" : "text-zinc-500 dark:text-zinc-400"
+                      }`}
+                    >
+                      Feed
+                      <NavigationMenuIndicator />
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+                    Maps
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="w-150 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-lg rounded-md p-0">
+                    <ul className="grid w-100 gap-3 p-4 md:w-125 md:grid-cols-2 lg:w-150">
+                      <li className="row-span-3">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-hidden focus:shadow-md"
+                            href="/maps"
+                          >
+                            <div className="mb-2 mt-4 text-lg font-medium">Explore Maps</div>
+                            <p className="text-sm leading-tight text-muted-foreground">
+                              View and organize your full workspace mapping collection.
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <Link href="/maps/recent" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <div className="text-sm font-medium leading-none">Recent Maps</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Quickly jump back into your last edit.</p>
                         </Link>
-                      </NavigationMenuLink>
-                    </li>
-                    <li>
-                      <Link href="/maps/recent" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Recent Maps</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Quickly jump back into your last edit.</p>
-                      </Link>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-            <div className="absolute top-full left-0 flex justify-center w-full mt-2">
-              <NavigationMenuViewport />
-            </div>
-          </NavigationMenu>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+              <div className="absolute top-full left-0 flex justify-center w-full mt-2">
+                <NavigationMenuViewport />
+              </div>
+            </NavigationMenu>
+          )}
         </div>
 
         {/* Navigation Controls */}
@@ -197,14 +201,14 @@ export function Header() {
                   </DropdownMenuItem>
 
                   <DropdownMenuItem asChild>
-                    <Link href="/account">
+                    <Link href="/account/info">
                       <LockKeyhole className="h-4 w-4" />
                       <span>Account</span>
                     </Link>
                   </DropdownMenuItem>
 
                   <DropdownMenuItem asChild>
-                    <Link href="/settings">
+                    <Link href="/settings/theme">
                       <SettingsIcon className="h-4 w-4" />
                       <span>Settings</span>
                     </Link>

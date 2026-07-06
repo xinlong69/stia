@@ -43,7 +43,7 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning className={`${geist.variable}`}>
       <body>
         {/* 1. ThemeProvider must be top-level under body to access DOM hydration */}
-        <ThemeProvider
+        <ThemeProvider 
           attribute="class"
           defaultTheme="system"
           enableSystem
