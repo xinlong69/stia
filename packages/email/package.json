@@ -19,8 +19,8 @@
     "email:dev": "email dev"
   },
   "dependencies": {
-    "react-email": "^6.6.6",
-    "resend": "^6.17.1",
+    "react-email": "^6.6.8",
+    "resend": "^6.17.2",
     "zod": "catalog:"
   },
   "peerDependencies": {
@@ -28,7 +28,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@react-email/ui": "^6.6.6",
+    "@react-email/ui": "^6.6.8",
     "@toolings/eslint-config": "workspace:*",
     "@toolings/prettier-config": "workspace:*",
     "@toolings/typescript-config": "workspace:*",
