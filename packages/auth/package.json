@@ -22,7 +22,7 @@
     "@packages/email": "workspace:*",
     "@packages/validators": "workspace:*",
     "@t3-oss/env-core": "^0.13.11",
-    "better-auth": "1.6.23",
+    "better-auth": "1.6.25",
     "zod": "catalog:"
   },
   "devDependencies": {

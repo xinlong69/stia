@@ -5,9 +5,9 @@ import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { authClient } from "@mobile/auth/client";
 import type { RouterOutputs } from "@mobile/utils/api";
 import { trpc } from "@mobile/utils/api";
-import { authClient } from "@mobile/utils/auth";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
