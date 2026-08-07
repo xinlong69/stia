@@ -1,5 +1,5 @@
 # 1. Base image
-FROM node:26-alpine AS base
+FROM dhi.io/node:26-alpine-sfw-ent-dev AS base
 RUN apk update && apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
